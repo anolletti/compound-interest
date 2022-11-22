@@ -350,7 +350,8 @@
                 class="form-control"
                 data-type="currency"
                 value="4000"
-onkeyup=calculation();
+onkeyup="principleSlider.value = Number(principleField.value.replace(/[^0-9.-]+/g,''));
+              principle = Number(principleField.value.replace(/[^0-9.-]+/g,'')); calculation()"
               />
             </div>
           </div>
