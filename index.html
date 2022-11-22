@@ -323,7 +323,7 @@
           <div class="row p-3">
             <label for="principleSlider" class="form-label"
               ><span lang="en">(P) Principle </span
-              ><span lang="fr">(P) Placement initial</span
+              ><span lang="fr">(P) Placement initial ou Capital </span
               ><i
                 class="fa-regular fa-circle-question fa-2xs"
                 name="principlePopover"
@@ -348,8 +348,11 @@
                 type="text"
                 id="principleField"
                 class="form-control"
+                onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                data-type="currency"
                 value="4000"
-data-type="currency"
+                onkeyup="principleSlider.value = numOnly(principleField.value);
+              principle = numOnly(principleField.value); calculation()"
               />
             </div>
           </div>
@@ -384,8 +387,8 @@ data-type="currency"
                 id="interestField"
                 class="form-control"
                 value="4%"
-                onkeyup="interestSlider.value = parseFloat(this.value);
-            interestRate = parseFloat(interestSlider.value) / 100; calculation()"
+                onkeyup="interestSlider.value = numOnly(this.value);
+            interestRate = numOnly(interestSlider.value) / 100; calculation()"
                 onkeypress="return event.charCode >= 44 &&
             event.charCode <= 57"
               />
@@ -422,8 +425,8 @@ data-type="currency"
                 id="timeField"
                 class="form-control"
                 value="10"
-                onkeyup="timeSlider.value = parseFloat(this.value);
-              time = parseFloat(this.value); calculation()"
+                onkeyup="timeSlider.value = numOnly(this.value);
+              time = numOnly(this.value); calculate()"
               />
             </div>
           </div>
