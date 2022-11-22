@@ -209,7 +209,6 @@ document.body.addEventListener("keypress", function (e) {
   }
 });
 
-principleField.addEventListener("keyup", userInputFunction);
 
 
 function formatAsPercent(num) {
