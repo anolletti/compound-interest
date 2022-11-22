@@ -201,14 +201,16 @@ function userInputFunction() {
   timeSlider.value = timeField.value;
   time = timeField.value;
   compound = compoundField2.value;
-  calculation();
-}
+  object.addEventListener("keyup", myScript);
 
 document.body.addEventListener("keypress", function (e) {
   if (e.key === "Enter") {
     userInputFunction();
   }
 });
+
+principleField.addEventListener("keyup", userInputFunction);
+
 
 function formatAsPercent(num) {
   return new Intl.NumberFormat("default", {
