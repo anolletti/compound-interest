@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:title" content="Investment Calculator Teaching App" />
+    <meta
+      property="og:description"
+      content="Teach investments, principle, interest, inflation, and compound interest."
+    />
+    <meta property="og:image" content="images/site_preview.png" />
+
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+
+    <!-- MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      type="text/javascript"
+      id="MathJax-script"
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
+    ></script>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <link href="styles.css" rel="stylesheet" />
+
+    <title>Investment Growth Calculator</title>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/083c33e49e.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Ubuntu:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ps-2 pe-2">
+      <div class="container-fluid">
+        <a class="navbar-brand brand pe-4" href="#">
+          <i class="fa-solid fa-calculator pe-2"></i>
+          <span lang="en"
+            ><span class="text-white-50">Investment</span>Calculator</span
+          ><span lang="fr"
+            ><span class="text-white-50">calculatrice</span>Placements</span
+          ></a
+        >
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <span lang="en">Resources</span
+                ><span lang="fr">Ressources</span>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <a
+                    class="dropdown-item"
+                    data-bs-toggle="modal"
+                    data-bs-target="#studentModal"
+                    ><span lang="en">for students</span
+                    ><span lang="fr">pour les élèves</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    data-bs-toggle="modal"
+                    data-bs-target="#teacherModal"
+                    ><span lang="en">for teachers</span
+                    ><span lang="fr">pour les enseignants</span></a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="mailto:anthonynolletti@gmail.com"
+                tabindex="-1"
+                aria-disabled="true"
+                ><span lang="en">Contact</span
+                ><span lang="fr">Contactez-moi</span></a
+              >
+            </li>
+          </ul>
+          <form class="d-flex">
+            <button
+              type="button"
+              class="btn btn-outline-light m-1"
+              id="languageButton"
+            >
+              <i class="fa-solid fa-earth-americas"></i>
+              en/fr
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MODALS -->
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="studentModal"
+      tabindex="-1"
+      aria-labelledby="studentModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="studentModalLabel">
+              <span lang="en">Student Reflection Questions</span>
+              <span lang="fr">Questions de réflexion pour les élèves</span>
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body modal-text">
+            <ol>
+              <li>
+                <span lang="en"
+                  >Observe the graph and the table. Why does the principle
+                  increase each year?</span
+                ><span lang="fr"
+                  >Observez le graphique et le tableau. Pourquoi le capital
+                  augmente-t-il chaque année ?</span
+                >
+              </li>
+              <br />
+              <li>
+                <span lang="en"
+                  >What shape is the graph: linear, exponential, or logarithmic?
+                  Can you explain why we see this shape when calculating
+                  compound interest?</span
+                ><span lang="fr"
+                  >Quelle est la forme du graphique : linéaire, exponentielle ou
+                  logarithmique ? Pouvez-vous expliquer pourquoi nous voyons
+                  cette forme lors du calcul des intérêts composés?</span
+                >
+              </li>
+              <br />
+              <li>
+                <span lang="en"
+                  >Observe the formula and calculation. Explain why these steps
+                  must be followed.</span
+                ><span lang="fr"
+                  >Observez la formule et le calcul. Expliquez pourquoi il faut
+                  suivre ces étapes.</span
+                >
+              </li>
+              <br />
+              <li>
+                <span lang="en"
+                  >Change the compounding periods per year (n). Explain how this
+                  affects your investment.</span
+                ><span lang="fr"
+                  >Modifiez les périodes de capitalisation par an (n). Expliquez
+                  comment cela affecte votre investissement.</span
+                >
+              </li>
+              <br />
+              <li>
+                <span lang="en"
+                  >The price of a $20 calculator increases with inflation
+                  (~2.5%) every year. Determine the price of this calculator in
+                  50 years.</span
+                ><span lang="fr"
+                  >Le prix d'une calculatrice de 20 $ augmente chaque année avec
+                  l'inflation (~2,5 %). Déterminez le prix de cette calculatrice
+                  dans 50 ans.</span
+                >
+              </li>
+            </ol>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="teacherModal"
+      tabindex="-1"
+      aria-labelledby="teacherModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="teacherModalLabel">
+              <span lang="en">Pedagogical Information</span>
+              <span lang="fr">Information pédagogique</span>
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body modal-text">
+            <dl class="row">
+              <dt class="col-sm-3">
+                <span lang="en">Outcomes</span><span lang="fr">Résultats</span>
+              </dt>
+              <dd class="col-sm-9">
+                <span lang="en"
+                  >(N4) Demonstrate an understanding of simple and compound
+                  interest.
+                </span>
+                <span lang="fr"
+                  >N4: Démontrer une compréhension des intérêts simples et
+                  composés.
+                </span>
+              </dd>
+              <dt class="col-sm-3">Description</dt>
+              <dd class="col-sm-9">
+                <span lang="en"
+                  >Teaching application to show compound interest calculation
+                  strategies and applications.
+                </span>
+                <span lang="fr"
+                  >Application pédagogique permettant de montrer les stratégies
+                  et les applications du calcul des intérêts composés.
+                </span>
+              </dd>
+
+              <dt class="col-sm-3">
+                <span lang="en">Vocabulary</span
+                ><span lang="fr">Vocabulaire</span>
+              </dt>
+              <dd class="col-sm-9">
+                <span lang="en">
+                  Compound Interest, Principle, Interest, Term, Compound
+                  Periods, Inflation
+                </span>
+                <span lang="fr">
+                  Intérêts composés, Capital, Intérêt, Terme, Périodes de calcul
+                  de l'intérêt, Inflation
+                </span>
+              </dd>
+              <dt class="col-sm-3">
+                <span lang="en">Activities</span
+                ><span lang="fr">Activités</span>
+              </dt>
+              <dd class="col-sm-9">
+                <span lang="en">
+                  Student reflection activity under "Student Resources"
+                </span>
+                <span lang="fr"> Activité de réflexion des élèves </span>
+              </dd>
+            </dl>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- End of Modals -->
+    <div class="container">
+      <div
+        class="row d-flex flex-row justify-content-center align-items-center"
+      >
+        <div
+          class="col-xs-12 col-lg-4 m-2 bevel d-flex flex-column justify-content-center align-items-center"
+        >
+          <h3 class="text-center">
+            <i class="fa-solid fa-gear fa-2x p-2"></i>
+          </h3>
+          <!-- Principle -->
+          <div class="row p-3">
+            <label for="principleSlider" class="form-label"
+              ><span lang="en">(P) Principle </span
+              ><span lang="fr">(P) Placement initial ou Capital </span
+              ><i
+                class="fa-regular fa-circle-question fa-2xs"
+                name="principlePopover"
+              ></i
+            ></label>
+
+            <div class="col-7">
+              <input
+                class="form-range"
+                type="range"
+                min="0"
+                max="50000"
+                step="50"
+                value="4000"
+                oninput="principleFunction(this.value)"
+                id="principleSlider"
+                name="principleSlider"
+              />
+            </div>
+            <div class="col-4">
+              <input
+                type="text"
+                id="principleField"
+                class="form-control"
+                onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                data-type="currency"
+                value="4000"
+                onkeyup="principleSlider.value = numOnly(principleField.value);
+              principle = numOnly(principleField.value); calculation()"
+              />
+            </div>
+          </div>
+
+          <!-- Interest -->
+          <div class="row p-3">
+            <label for="interestSlider" class="form-label"
+              ><span lang="en">(i) Annual Interest Rate </span
+              ><span lang="fr">(i) Taux d'intérêt annuel </span
+              ><i
+                class="fa-regular fa-circle-question fa-2xs"
+                name="interestPopover"
+              ></i
+            ></label>
+
+            <div class="col-7">
+              <input
+                class="form-range"
+                name="interestSlider"
+                type="range"
+                min="0"
+                max="50"
+                step="0.5"
+                value=""
+                oninput="interestFunction(this.value)"
+                id="interestSlider"
+              />
+            </div>
+            <div class="col-4">
+              <input
+                type="text"
+                id="interestField"
+                class="form-control"
+                value="4%"
+                onkeyup="interestSlider.value = numOnly(this.value);
+            interestRate = numOnly(interestSlider.value) / 100; calculation()"
+                onkeypress="return event.charCode >= 44 &&
+            event.charCode <= 57"
+              />
+            </div>
+          </div>
+
+          <!-- Term -->
+          <div class="row p-3">
+            <label for="timeSlider" class="form-label"
+              ><span lang="en">(t) Term in Years </span>
+              <span lang="fr">(t) Durée en années </span
+              ><i
+                class="fa-regular fa-circle-question fa-2xs"
+                name="termPopover"
+              ></i
+            ></label>
+
+            <div class="col-7">
+              <input
+                class="form-range"
+                name="timeSlider"
+                type="range"
+                min="0"
+                max="50"
+                step="1"
+                value="10"
+                oninput="timeFunction(this.value)"
+                id="timeSlider"
+              />
+            </div>
+            <div class="col-4">
+              <input
+                type="text"
+                id="timeField"
+                class="form-control"
+                value="10"
+                onkeyup="timeSlider.value = numOnly(this.value);
+              time = numOnly(this.value); calculate()"
+              />
+            </div>
+          </div>
+
+          <!-- Compounded -->
+
+          <div class="row p-3">
+            <label for="compoundList" class="form-label"
+              ><span lang="en">(n) Compounding periods per year </span>
+              <span lang="fr"
+                >(n) Périodes de calcul de l'intérêt par année </span
+              ><i
+                class="fa-regular fa-circle-question fa-2xs"
+                name="compoundPopover"
+              ></i>
+            </label>
+
+            <div class="col-7">
+              <select class="form-control" id="compoundList"></select>
+            </div>
+            <div class="col-4">
+              <input
+                type="text"
+                id="compoundField2"
+                class="form-control"
+                onkeypress="return event.charCode
+            >= 48 && event.charCode <= 57"
+                value="1"
+                disabled
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-lg-7 m-2">
+          <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button
+                  class="accordion-button bg-dark"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseOne"
+                  aria-expanded="true"
+                  aria-controls="collapseOne"
+                >
+                  <i class="fa-solid fa-chart-column accordion-text pe-3"></i>
+                  <span lang="en" class="accordion-text"
+                    >Graph of Investment Growth</span
+                  >
+                  <span lang="fr" class="accordion-text"
+                    >Graphique de la croissance des placements</span
+                  >
+                </button>
+              </h2>
+              <div
+                id="collapseOne"
+                class="accordion-collapse collapse show"
+                aria-labelledby="headingOne"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body">
+                  <!-- Graph -->
+                  <h5 class="pb-3 pt-3">
+                    <span lang="en">In </span><span lang="fr">Dans </span>
+                    <span id="numberOfYears"></span>,
+                    <span lang="en">your investment will amount to </span
+                    ><span lang="fr">votre investissement sera de </span>
+                    <span id="finalPrinciple"></span>.
+                  </h5>
+                  <canvas id="interestElement"></canvas>
+
+                  <!-- End of Graph -->
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button
+                  class="accordion-button bg-dark collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseTwo"
+                  aria-expanded="false"
+                  aria-controls="collapseTwo"
+                >
+                  <i
+                    class="fa-solid fa-square-root-variable accordion-text pe-3"
+                  ></i>
+                  <span lang="en" class="accordion-text"
+                    >Using the Compound Interest Formula</span
+                  >
+                  <span lang="fr" class="accordion-text"
+                    >La formule des intérêts composés</span
+                  >
+                </button>
+              </h2>
+              <div
+                id="collapseTwo"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingTwo"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body accordion-body-text">
+                  <div id="calculations"></div>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button
+                  class="accordion-button collapsed bg-dark"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseThree"
+                  aria-expanded="false"
+                  aria-controls="collapseThree"
+                >
+                  <i class="fa-solid fa-table accordion-text pe-3"></i>
+                  <span lang="en" class="accordion-text">Table of Values</span>
+                  <span lang="fr" class="accordion-text"
+                    >La table de valeurs</span
+                  >
+                </button>
+              </h2>
+              <div
+                id="collapseThree"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingThree"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body">
+                  <table
+                    class="table table-hover table-striped"
+                    id="tableOfValues"
+                  >
+                    <thead>
+                      <tr>
+                        <th scope="col">
+                          <span lang="en">Year (t)</span
+                          ><span lang="fr">Année (t)</span>
+                        </th>
+                        <th scope="col">
+                          <span lang="en">Starting Principle (P)</span
+                          ><span lang="fr">Capital initial (P)</span>
+                        </th>
+                        <th scope="col">
+                          <span lang="en">Interest (i)</span
+                          ><span lang="fr">Intérêts (i)</span>
+                        </th>
+                        <th scope="col">
+                          <span lang="en">New Principle (A)</span
+                          ><span lang="fr">Capital final (A)</span>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="py-2 my-2 mt-5 bg-white">
+      <ul class="nav justify-content-center border-bottom pb-3">
+        <li class="nav-item">
+          <a
+            class="nav-link px-2 text-muted"
+            data-bs-toggle="modal"
+            data-bs-target="#teacherModal"
+            lang="en"
+            >Teacher Resource</a
+          >
+          <a
+            class="nav-link px-2 text-muted"
+            data-bs-toggle="modal"
+            data-bs-target="#teacherModal"
+            lang="fr"
+            >Ressource pour enseignant</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link px-2 text-muted"
+            data-bs-toggle="modal"
+            data-bs-target="#studentModal"
+            lang="en"
+            ><span lang="en">Student Exploration</span></a
+          >
+          <a
+            class="nav-link px-2 text-muted"
+            data-bs-toggle="modal"
+            data-bs-target="#teacherModal"
+            lang="fr"
+            ><span lang="fr">Activité</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            href="mailto:anthonynolletti@gmail.com"
+            class="nav-link px-2 text-muted"
+            ><span lang="en">Contact Me</span
+            ><span lang="fr">Contactez-moi</span></a
+          >
+        </li>
+      </ul>
+      <p class="text-center text-muted">© 2022 Anthony Nolletti</p>
+    </footer>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Chart JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <script src="script.js"></script>
+  </body>
+</html>
