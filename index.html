@@ -386,8 +386,7 @@ onkeyup="principleSlider.value = Number(principleField.value.replace(/[^0-9.-]+/
                 id="interestField"
                 class="form-control"
                 value="4%"
-                onkeyup="onkeyup"
-                ="interestSlider.value = parseFloat(this.value);
+                onkeyup="interestSlider.value = parseFloat(this.value);
             interestRate = parseFloat(interestSlider.value) / 100; calculation()"
                 onkeypress="return event.charCode >= 44 &&
             event.charCode <= 57"
