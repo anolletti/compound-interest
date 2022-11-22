@@ -352,10 +352,10 @@ function labelMaker(word) {
       label = "Intérêts";
     }
     if (word == "year") {
-      label = "année";
+      label = "an";
     }
     if (word == "years") {
-      label = "années";
+      label = "ans";
     }
     if (word == "Year") {
       label = "année";
