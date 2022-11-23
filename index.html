@@ -349,7 +349,7 @@
                 id="principleField"
                 class="form-control"
                 onkeypress="return event.charCode >= 48 && event.charCode <= 57"
-                value="5000"
+                value="4000"
               />
             </div>
           </div>
@@ -379,9 +379,13 @@
               />
             </div>
             <div class="col-4">
-              <input type="text" id="interestField" class="form-control"
-              value="4%" onkeypress="return event.charCode >= 44 &&
-              event.charCode <= 57" }" />
+              <input
+                type="text"
+                id="interestField"
+                class="form-control"
+                value="4%"
+                onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+              />
             </div>
           </div>
 
@@ -417,6 +421,7 @@
                 value="10"
                 onkeyup="timeSlider.value = numOnly(this.value);
               time = numOnly(this.value); calculate()"
+                onkeypress="return event.charCode >= 48 && event.charCode <= 57"
               />
             </div>
           </div>
