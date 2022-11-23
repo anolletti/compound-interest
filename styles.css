@@ -38,6 +38,9 @@ body {
   .brand {
     font-size: 1.2rem;
   }
+  h5 {
+    font-size: 1rem;
+  }
 }
 
 .accordion-button:not(.collapsed)::after {
