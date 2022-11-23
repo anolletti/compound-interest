@@ -311,10 +311,10 @@
     <!-- End of Modals -->
     <div class="container pt-xs-3 pt-lg-5">
       <div
-        class="row d-flex flex-row justify-content-center align-items-center"
+        class="row d-flex flex-row justify-content-center align-items-center m-3 m-md-3"
       >
         <div
-          class="col-xs-12 col-lg-4 m-2 bevel d-flex flex-column justify-content-center align-items-center"
+          class="col-xs-12 col-lg-4 bevel d-flex flex-column justify-content-center mb-3 m-mb-0"
         >
           <h3 class="text-center">
             <i class="fa-solid fa-gear fa-2x p-2"></i>
@@ -347,7 +347,7 @@
               <input
                 type="text"
                 id="principalField"
-                class="form-control"
+                class="form-control NumericInput"
                 onkeypress="return event.charCode >= 48 && event.charCode <= 57"
                 value="5000"
               />
@@ -382,7 +382,7 @@
               <input
                 type="text"
                 id="interestField"
-                class="form-control"
+                class="form-control NumericInput"
                 value="4%"
               />
             </div>
@@ -416,7 +416,7 @@
               <input
                 type="text"
                 id="timeField"
-                class="form-control"
+                class="form-control NumericInput"
                 value="10"
                 onkeyup="timeSlider.value = numOnly(this.value);
               time = numOnly(this.value); calculate()"
@@ -445,7 +445,7 @@
               <input
                 type="text"
                 id="compoundField2"
-                class="form-control"
+                class="form-control NumericInput"
                 onkeypress="return event.charCode
             >= 48 && event.charCode <= 57"
                 value="1"
