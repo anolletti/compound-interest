@@ -189,6 +189,7 @@ function graphTitle() {
 
 interestField.addEventListener("blur", userInputFunction);
 principleField.addEventListener("blur", userInputFunction);
+timeField.addEventListener("blur", userInputFunction);
 
 function userInputFunction() {
   currencyFormatter();
