@@ -1,18 +1,18 @@
 let language = "en";
 let interestRate, time, compound, answer;
-let principle,
+let principal,
   selection = null;
 let year = [];
 let interestAccrued = [];
-let formerPrinciple = [];
-let newPrinciple = [];
+let formerPrincipal = [];
+let newPrincipal = [];
 
 const currencyFr = "fr-CA";
 const currencyEn = "en-CA";
 const calculationsField = document.getElementById("calculations");
 
 // FIELDS & SLIDERS
-const principleField = document.getElementById("principleField");
+const principalField = document.getElementById("principalField");
 const interestField = document.getElementById("interestField");
 const timeField = document.getElementById("timeField");
 const compoundField = document.getElementById("compoundField");
@@ -20,7 +20,7 @@ const compoundField = document.getElementById("compoundField");
 const compoundField2 = document.getElementById("compoundField2");
 const compoundList = document.getElementById("compoundList");
 
-const principleSlider = document.getElementById("principleSlider");
+const principalSlider = document.getElementById("principalSlider");
 const interestSlider = document.getElementById("interestSlider");
 const timeSlider = document.getElementById("timeSlider");
 const interestElement = document.getElementById("interestElement");
@@ -32,10 +32,10 @@ function numOnly(str) {
   return Number(res);
 }
 
-function principleFunction(val) {
+function principalFunction(val) {
   currencyFormatter();
-  principleField.value = formatter.format(val);
-  principle = val;
+  principalField.value = formatter.format(val);
+  principal = val;
   calculation();
 }
 
@@ -104,7 +104,7 @@ language = "en";
 function calculation() {
   currencyFormatter();
   if (
-    principle != undefined &&
+    principal != undefined &&
     interestRate != undefined &&
     time != undefined &&
     compound != undefined &&
@@ -112,19 +112,19 @@ function calculation() {
   ) {
     let exp = Number(time) * Number(compound);
     let base = Number(interestRate) / Number(compound) + 1;
-    answer = formatter.format(Math.pow(base, exp) * principle);
+    answer = formatter.format(Math.pow(base, exp) * principal);
 
     if (language == "fr") {
       calculationsField.innerHTML = `
       Étape 1: Sers-toi de la formule des intérêts composés
      $$A = P (1 + {i \\over n})^{nt}$$ <br> Étape 2: Entre les valeurs des variables
   $$A = ${formatter.format(
-    principle
+    principal
   )} (1 + {${interestRate} \\over ${compound}})^{(${compound})(${time})}$$ <br> Étape 3: Parenthèses
-  $$A = ${formatter.format(principle)}  (1 + ${parseFloat(
+  $$A = ${formatter.format(principal)}  (1 + ${parseFloat(
         interestRate / compound
       ).toFixed(4)})^{${compound * time}}$$ <br> Étape 4: Exposants
-    $$A = ${formatter.format(principle)}  (${parseFloat(
+    $$A = ${formatter.format(principal)}  (${parseFloat(
         1 + interestRate / compound
       ).toFixed(4)})^{${compound * time}}$$ <br> Étape 5: Multiplie et résous
     $$A = ${answer}$$ 
@@ -134,12 +134,12 @@ function calculation() {
       Step 1: Use the compound interest formula
      $$A = P (1 + {i \\over n})^{nt}$$ <br> Step 2: Input your variables
   $$A = ${formatter.format(
-    principle
+    principal
   )} (1 + {${interestRate} \\over ${compound}})^{(${compound})(${time})}$$ <br> Step 3: Parentheses
-  $$A = ${formatter.format(principle)}  (1 + ${parseFloat(
+  $$A = ${formatter.format(principal)}  (1 + ${parseFloat(
         interestRate / compound
       ).toFixed(4)})^{${compound * time}}$$ <br> Step 4: Exponents
-    $$A = ${formatter.format(principle)}  (${parseFloat(
+    $$A = ${formatter.format(principal)}  (${parseFloat(
         1 + interestRate / compound
       ).toFixed(4)})^{${compound * time}}$$ <br> Step 5: Multiply and solve
     $$A = ${answer}$$ 
@@ -150,8 +150,8 @@ function calculation() {
     // Graph Data
     year = [`0`];
     interestAccrued = [0];
-    formerPrinciple = [Number(principle)];
-    newPrinciple = [Number(principle)];
+    formerPrincipal = [Number(principal)];
+    newPrincipal = [Number(principal)];
 
     for (let i = 1; i < Number(time) + 1; i++) {
       year.push(`${i}`);
@@ -159,9 +159,9 @@ function calculation() {
         1 + Number(interestRate) / Number(compound),
         Number(compound) * i
       );
-      newPrinciple.push(base * Number(principle));
-      interestAccrued.push(newPrinciple[i] - newPrinciple[i - 1]);
-      formerPrinciple.push(newPrinciple[i - 1]);
+      newPrincipal.push(base * Number(principal));
+      interestAccrued.push(newPrincipal[i] - newPrincipal[i - 1]);
+      formerPrincipal.push(newPrincipal[i - 1]);
     }
     graphing();
 
@@ -182,20 +182,20 @@ function graphTitle() {
     )}`;
   }
 
-  document.getElementById("finalPrinciple").innerHTML = `${formatter.format(
+  document.getElementById("finalPrincipal").innerHTML = `${formatter.format(
     numOnly(answer)
   )}`;
 }
 // Event listeners for input fields
 interestField.addEventListener("blur", userInputFunction);
-principleField.addEventListener("blur", userInputFunction);
+principalField.addEventListener("blur", userInputFunction);
 timeField.addEventListener("blur", userInputFunction);
 
 function userInputFunction() {
   currencyFormatter();
-  principleField.value = formatter.format(numOnly(principleField.value));
-  principleSlider.value = numOnly(principleField.value);
-  principle = numOnly(principleField.value);
+  principalField.value = formatter.format(numOnly(principalField.value));
+  principalSlider.value = numOnly(principalField.value);
+  principal = numOnly(principalField.value);
   interestSlider.value = parseFloat(interestField.value);
   interestRate = parseFloat(interestSlider.value) / 100;
 
@@ -257,10 +257,10 @@ languageButton.addEventListener("click", function () {
 
   compoundList.selectedIndex = selection;
   currencyFormatter();
-  if (principle != null) {
-    principleField.value = formatter.format(parseFloat(principle));
+  if (principal != null) {
+    principalField.value = formatter.format(parseFloat(principal));
   } else {
-    principleField.value = formatter.format(0);
+    principalField.value = formatter.format(0);
   }
 
   calculation();
@@ -349,7 +349,7 @@ function formatCurrency(input, blur) {
 
 function labelMaker(word) {
   if (language == "fr") {
-    if (word == "Principle") {
+    if (word == "Principal") {
       label = "Capital";
     }
     if (word == "Interest") {
@@ -378,8 +378,8 @@ function graphing() {
     labels: year,
     datasets: [
       {
-        label: labelMaker("Principle"),
-        data: formerPrinciple,
+        label: labelMaker("Principal"),
+        data: formerPrincipal,
         backgroundColor: colors[0],
       },
       {
@@ -516,9 +516,9 @@ function createTable() {
     var cell3 = row.insertCell(2);
     var cell4 = row.insertCell(3);
     cell1.innerHTML = year[i];
-    cell2.innerHTML = formatter.format(formerPrinciple[i]);
+    cell2.innerHTML = formatter.format(formerPrincipal[i]);
     cell3.innerHTML = formatter.format(interestAccrued[i]);
-    cell4.innerHTML = formatter.format(newPrinciple[i]);
+    cell4.innerHTML = formatter.format(newPrincipal[i]);
   }
 }
 
@@ -540,7 +540,7 @@ function setPopoversFr() {
   currencyFormatter();
   if (language == "fr") {
     createPopover(
-      "principlePopover",
+      "principalPopover",
       "Capital",
       "Le montant original investi ou emprunté."
     );
@@ -564,8 +564,8 @@ function setPopoversFr() {
 
 function setPopoversEn() {
   createPopover(
-    "principlePopover",
-    "Principle",
+    "principalPopover",
+    "Principal",
     "The original amount invested or borrowed"
   );
   createPopover(

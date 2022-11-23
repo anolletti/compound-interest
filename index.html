@@ -7,7 +7,7 @@
     <meta property="og:title" content="Investment Calculator Teaching App" />
     <meta
       property="og:description"
-      content="Teach investments, principle, interest, inflation, and compound interest."
+      content="Teach investments, principal, interest, inflation, and compound interest."
     />
     <meta property="og:image" content="images/site_preview.png" />
 
@@ -155,7 +155,7 @@
             <ol>
               <li>
                 <span lang="en"
-                  >Observe the graph and the table. Why does the principle
+                  >Observe the graph and the table. Why does the principal
                   increase each year?</span
                 ><span lang="fr"
                   >Observez le graphique et le tableau. Pourquoi le capital
@@ -275,7 +275,7 @@
               </dt>
               <dd class="col-sm-9">
                 <span lang="en">
-                  Compound Interest, Principle, Interest, Term, Compound
+                  Compound Interest, Principal, Interest, Term, Compound
                   Periods, Inflation
                 </span>
                 <span lang="fr">
@@ -319,14 +319,14 @@
           <h3 class="text-center">
             <i class="fa-solid fa-gear fa-2x p-2"></i>
           </h3>
-          <!-- Principle -->
+          <!-- Principal -->
           <div class="row p-3">
-            <label for="principleSlider" class="form-label"
-              ><span lang="en">(P) Principle </span
+            <label for="principalSlider" class="form-label"
+              ><span lang="en">(P) Principal </span
               ><span lang="fr">(P) Placement initial ou Capital </span
               ><i
                 class="fa-regular fa-circle-question fa-2xs"
-                name="principlePopover"
+                name="principalPopover"
               ></i
             ></label>
 
@@ -338,15 +338,15 @@
                 max="50000"
                 step="50"
                 value="5000"
-                oninput="principleFunction(this.value)"
-                id="principleSlider"
-                name="principleSlider"
+                oninput="principalFunction(this.value)"
+                id="principalSlider"
+                name="principalSlider"
               />
             </div>
             <div class="col-4">
               <input
                 type="text"
-                id="principleField"
+                id="principalField"
                 class="form-control"
                 onkeypress="return event.charCode >= 48 && event.charCode <= 57"
                 value="5000"
@@ -489,7 +489,7 @@
                     <span id="numberOfYears"></span>,
                     <span lang="en">your investment will amount to </span
                     ><span lang="fr">votre investissement sera de </span>
-                    <span id="finalPrinciple"></span>.
+                    <span id="finalPrincipal"></span>.
                   </h5>
                   <canvas id="interestElement"></canvas>
 
@@ -564,7 +564,7 @@
                           ><span lang="fr">Année (t)</span>
                         </th>
                         <th scope="col">
-                          <span lang="en">Starting Principle (P)</span
+                          <span lang="en">Starting Principal (P)</span
                           ><span lang="fr">Capital initial (P)</span>
                         </th>
                         <th scope="col">
@@ -572,7 +572,7 @@
                           ><span lang="fr">Intérêts (i)</span>
                         </th>
                         <th scope="col">
-                          <span lang="en">New Principle (A)</span
+                          <span lang="en">New Principal (A)</span
                           ><span lang="fr">Capital final (A)</span>
                         </th>
                       </tr>
