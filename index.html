@@ -337,7 +337,7 @@
                 min="0"
                 max="50000"
                 step="50"
-                value="3000"
+                value="4000"
                 oninput="principleFunction(this.value)"
                 id="principleSlider"
                 name="principleSlider"
@@ -349,7 +349,7 @@
                 id="principleField"
                 class="form-control"
                 onkeypress="return event.charCode >= 48 && event.charCode <= 57"
-                value="7000"
+                value="4000"
                 onkeyup="userInputFunction()"
               />
             </div>
@@ -380,19 +380,11 @@
               />
             </div>
             <div class="col-4">
-              <input
-                type="text"
-                id="interestField"
-                class="form-control"
-                value="4%"
-                onkeyup="interestSlider.value = numOnly(this.value);
-            interestRate = numOnly(interestSlider.value) / 100; calculation()"
-                onkeypress="return event.charCode >= 44 &&
-            event.charCode <= 57"
-                oninput="if (!interestField.value.includes('%')) {
-              interestField.value += '%';
-            }"
-              />
+              <input type="text" id="interestField" class="form-control"
+              value="4%" onkeyup="interestSlider.value = numOnly(this.value);
+              interestRate = numOnly(interestSlider.value) / 100; calculation()"
+              onkeypress="return event.charCode >= 44 && event.charCode <= 57"
+              }" />
             </div>
           </div>
 

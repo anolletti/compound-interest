@@ -187,6 +187,12 @@ function graphTitle() {
   )}`;
 }
 
+document.body.addEventListener("click", function () {
+  if (!interestField.value.includes("%")) {
+    interestField.value += "%";
+  }
+});
+
 function userInputFunction() {
   currencyFormatter();
   principleField.value = formatter.format(numOnly(principleField.value));
