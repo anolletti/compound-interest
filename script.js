@@ -187,11 +187,8 @@ function graphTitle() {
   )}`;
 }
 
-document.body.addEventListener("click", function () {
-  if (!interestField.value.includes("%")) {
-    interestField.value += "%";
-  }
-});
+interestField.addEventListener("blur", userInputFunction);
+principleField.addEventListener("blur", userInputFunction);
 
 function userInputFunction() {
   currencyFormatter();

@@ -350,7 +350,6 @@
                 class="form-control"
                 onkeypress="return event.charCode >= 48 && event.charCode <= 57"
                 value="4000"
-                onkeyup="userInputFunction()"
               />
             </div>
           </div>
@@ -381,10 +380,8 @@
             </div>
             <div class="col-4">
               <input type="text" id="interestField" class="form-control"
-              value="4%" onkeyup="interestSlider.value = numOnly(this.value);
-              interestRate = numOnly(interestSlider.value) / 100; calculation()"
-              onkeypress="return event.charCode >= 44 && event.charCode <= 57"
-              }" />
+              value="4%" onkeypress="return event.charCode >= 44 &&
+              event.charCode <= 57" }" />
             </div>
           </div>
 
