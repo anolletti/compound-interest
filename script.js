@@ -186,14 +186,10 @@ function graphTitle() {
     numOnly(answer)
   )}`;
 }
-
+// Event listeners for input fields
 interestField.addEventListener("blur", userInputFunction);
 principleField.addEventListener("blur", userInputFunction);
 timeField.addEventListener("blur", userInputFunction);
-
-setInputFilter(interestField, function (value) {
-  return /^\d*\.?\d*$/.test(value); // Allow digits and '.' only, using a RegExp
-});
 
 function userInputFunction() {
   currencyFormatter();
