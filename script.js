@@ -210,7 +210,7 @@ function userInputFunction() {
       );
     } else {
       alert(
-        "This calculator only accepts positive interest rate values. Please note that negative can exist."
+        "This calculator only accepts positive interest rate values. Please note that negative values can exist."
       );
     }
   }
