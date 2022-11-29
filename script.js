@@ -42,6 +42,7 @@ function principalFunction(val) {
 function interestFunction(val) {
   interestField.value = val + "%";
   interestRate = val / 100;
+
   calculation();
 }
 
@@ -199,9 +200,25 @@ function userInputFunction() {
   interestSlider.value = parseFloat(interestField.value);
   interestRate = parseFloat(interestSlider.value) / 100;
 
+  if (
+    parseFloat(interestField.value) < 0 ||
+    numOnly(principalField.value) < 0
+  ) {
+    if (language == "fr") {
+      alert(
+        "Cette calculatrice accepte uniquement les taux d'intérêt positifs. Les valeurs négatives existent dans la vie réelle."
+      );
+    } else {
+      alert(
+        "This calculator only accepts positive interest rate values. Please note that negative can exist."
+      );
+    }
+  }
+
   if (!interestField.value.includes("%")) {
     interestField.value += "%";
   }
+
   timeSlider.value = timeField.value;
   time = timeField.value;
   compound = compoundField2.value;
@@ -209,7 +226,7 @@ function userInputFunction() {
 }
 
 document.body.addEventListener("keypress", function (e) {
-  if (e.key === "Enter") {
+  if (e.key === "Enter" && parseFloat(interestField.value) > 0) {
     userInputFunction();
   }
 });
