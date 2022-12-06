@@ -128,7 +128,7 @@ function calculation() {
     $$A = ${formatter.format(principal)}  (${parseFloat(
         1 + interestRate / compound
       ).toFixed(4)})^{${compound * time}}$$ <br> Étape 5: Multiplie et résous
-    $$A = ${answer}$$ 
+    $$A = {${answer}}$$ 
     `;
     } else {
       calculationsField.innerHTML = `
